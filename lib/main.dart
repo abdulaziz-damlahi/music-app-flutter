@@ -9,55 +9,33 @@ class XylophoneApp extends StatelessWidget {
     player.play('note$soundnumber.wav');
   }
 
+  Expanded sevenkey({Color color, int soundNumber}) {
+    return Expanded(
+      child: FlatButton(
+        color: color,
+        onPressed: () {
+          playSound(soundNumber);
+        },
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
+        backgroundColor: Colors.black,
         body: SafeArea(
           child: Column(
-            children: [
-              FlatButton(
-                color: Colors.red,
-                onPressed: () {
-                  playSound(1);
-                },
-              ),
-              FlatButton(
-                color: Colors.blue,
-                onPressed: () {
-                  playSound(2);
-                },
-              ),
-              FlatButton(
-                color: Colors.green,
-                onPressed: () {
-                  playSound(3);
-                },
-              ),
-              FlatButton(
-                color: Colors.black,
-                onPressed: () {
-                  playSound(4);
-                },
-              ),
-              FlatButton(
-                color: Colors.yellow,
-                onPressed: () {
-                  playSound(5);
-                },
-              ),
-              FlatButton(
-                color: Colors.orange,
-                onPressed: () {
-                  playSound(6);
-                },
-              ),
-              FlatButton(
-                color: Colors.white10,
-                onPressed: () {
-                  playSound(7);
-                },
-              ),
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: <Widget>[
+              sevenkey(color: Colors.red, soundNumber: 1),
+              sevenkey(color: Colors.green, soundNumber: 2),
+              sevenkey(color: Colors.grey, soundNumber: 3),
+              sevenkey(color: Colors.orange, soundNumber: 4),
+              sevenkey(color: Colors.indigo, soundNumber: 5),
+              sevenkey(color: Colors.indigoAccent, soundNumber: 6),
+              sevenkey(color: Colors.amber, soundNumber: 7),
             ],
           ),
         ),
